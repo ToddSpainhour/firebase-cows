@@ -12,6 +12,7 @@ const logOutButton = $('#navbar-logout-button');
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      // user logged in
       authDiv.addClass('hide');
       pastureDiv.removeClass('hide');
       farmhouseDiv.removeClass('hide');
@@ -19,8 +20,10 @@ const checkLoginStatus = () => {
       pasture.buildCows();
       farmhouse.buildFarmers();
     } else {
+      // user logged out
       authDiv.removeClass('hide');
       pastureDiv.addClass('hide');
+      farmhouseDiv.addClass('hide');
       logOutButton.addClass('hide');
     }
   });
